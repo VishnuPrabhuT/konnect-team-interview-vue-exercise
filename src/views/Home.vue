@@ -1,17 +1,30 @@
+/* eslint-disable */
 <template>
-  <div>
+  <main>
     <Catalog />
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Catalog from '../components/Catalog.vue'
+import Vue from "vue";
+import Catalog from "../components/Catalog.vue";
 
 export default Vue.extend({
-  name: 'Home',
+  name: "Home",
   components: {
-    Catalog
-  }
-})
+    Catalog,
+  },
+});
 </script>
+
+<style lang="sass" scoped>
+main
+  width: 50vw
+  margin: 0 auto
+  max-height: 85vh
+  overflow: hidden
+
+@media screen and (max-width: 900px)
+  main
+    width: 75vw
+</style>
