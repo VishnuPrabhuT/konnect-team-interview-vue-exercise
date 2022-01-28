@@ -9,7 +9,7 @@
         v-model="searchTerm"
       />
     </div>
-    <div>
+    <div class="add-button-wrapper">
       <KButton appearance="primary" size="small" :isRounded="false"
         >Add New Service</KButton
       >
@@ -35,10 +35,7 @@ export default Vue.extend({
   },
   watch: {
     searchTerm(val) {
-      this.$emit("toggleLoading");
-
       this.$store.dispatch("search", val);
-      this.$emit("toggleLoading");
     },
   },
   methods: {},
@@ -50,7 +47,7 @@ export default Vue.extend({
     position: relative
     display: flex
     justify-content: space-between
-    padding: 1rem 0
+    margin: 2.5rem 0
     text-align: left
 
     & div > h2
@@ -64,4 +61,7 @@ export default Vue.extend({
 
     & .k-button
         font-family: Avenir, Helvetica, Arial, sans-serif!important
+
+    & .add-button-wrapper
+        margin-right: 0.8rem
 </style>

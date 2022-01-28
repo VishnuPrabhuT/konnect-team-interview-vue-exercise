@@ -67,9 +67,6 @@ export default Vue.extend({
   computed: {
     ...mapState(["services", "filteredServices", "visibleServices"]),
   },
-  created() {
-    console.log(this.services);
-  },
 });
 </script>
 
