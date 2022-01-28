@@ -18,8 +18,10 @@ export default new Vuex.Store({
             res = await res.json();
             commit("setServices", res);
         },
+        setVisibleServices({ commit }, payload) {
+            commit("setVisibleServices", payload);
+        },
         search({ commit }, val) {
-            console.log(val);
             if (val == "" || val == "<empty string>") {
                 commit("resetServices");
                 return;
@@ -28,12 +30,13 @@ export default new Vuex.Store({
             let filteredItems = [];
             filteredItems = this.state.services.filter((item: any) => {
                 return (
-                    item.name.toLowerCase().includes(val) ||
-                    item.description.toLowerCase().includes(val) ||
+                    item.name.toLowerCase().includes(val.toLowerCase()) ||
+                    item.description
+                        .toLowerCase()
+                        .includes(val.toLowerCase()) ||
                     item.versions.length == Number(val)
                 );
             });
-            console.log(filteredItems);
 
             commit("setFilteredServices", filteredItems);
             this.state.searchTerm = val;
@@ -53,8 +56,8 @@ export default new Vuex.Store({
         resetServices(state, payload) {
             state.filteredServices = state.services;
         },
-        toggleLoading(state) {
-            state.loading = !state.loading;
+        setVisibleServices(state, payload) {
+            state.visibleServices = payload;
         }
     },
     modules: {}

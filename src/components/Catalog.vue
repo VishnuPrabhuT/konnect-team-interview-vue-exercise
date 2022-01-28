@@ -32,7 +32,7 @@
         :totalCount="filteredServices.length"
         :disablePageJump="true"
         @pageChanged="
-          ({ page, visibleItems }) => (visibleServices = visibleItems)
+          ({ page, visibleItems }) => setVisibleServices(page, visibleItems)
         "
       >
       </Pagination>
@@ -67,6 +67,11 @@ export default Vue.extend({
   computed: {
     ...mapState(["services", "filteredServices", "visibleServices"]),
   },
+  methods: {
+    setVisibleServices(page, visibleItems) {
+      this.$store.dispatch("setVisibleServices", visibleItems);
+    },
+  },
 });
 </script>
 
@@ -84,7 +89,7 @@ export default Vue.extend({
   display: grid
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
   place-items: center
-  gap: 1% 0.5%
+  gap: 3% 0.5%
 
 .service
   flex-basis: 20%

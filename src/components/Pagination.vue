@@ -315,7 +315,7 @@ export default {
 @import "~@kongponents/styles/variables";
 
 .card-pagination-bar {
-  margin: 2rem;
+  margin: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;

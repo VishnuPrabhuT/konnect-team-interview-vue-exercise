@@ -38,8 +38,12 @@ export default Vue.extend({
 main
   width: 50vw
   margin: 0 auto
-  max-height: 87vh
-  overflow: hidden
+  max-height: 93vh
+  overflow: scroll
+  scrollbar-width: none
+
+  &::-webkit-scrollbar
+    display: none
 
 @media screen and (max-width: 900px)
   main
