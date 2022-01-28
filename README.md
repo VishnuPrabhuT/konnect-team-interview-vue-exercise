@@ -1,3 +1,12 @@
+# Remarks
+
+
+-> Used Vue 2 as I tried migrating the sample app to Vue 3 but it proved to be really time consuming.
+-> Implemented search & pagination with vuex and by reusing soe of the kongponents and making custom components where necessary to save time.
+-> If I could spend more time I would focus on writing unit & e2e tests.
+
+
+
 # Welcome
 Goal: make this vue app as close to this mock https://www.figma.com/file/zeaWiePnc3OCe34I4oZbzN/Service-Card-List?node-id=0%3A1 as possible
 
@@ -74,3 +83,6 @@ or
 ```shell
 npm run lint
 ```
+
+
+
