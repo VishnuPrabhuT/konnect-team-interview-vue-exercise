@@ -38,7 +38,7 @@ export default Vue.extend({
 main
   width: 50vw
   margin: 0 auto
-  max-height: 85vh
+  max-height: 87vh
   overflow: hidden
 
 @media screen and (max-width: 900px)

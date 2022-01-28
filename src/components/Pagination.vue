@@ -418,7 +418,7 @@ a
         height: 15px
         border-radius: 50%
         &.kong-icon-arrowLeft
-            background: no-repeat center/contain url('data:image/svg+xml,%3Csvg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0.345703 4.49609L4.14258 0.699219V3.8457H14.4434V5.14648H4.14258V8.29297L0.345703 4.49609Z" fill="black" fill-opacity="0.25"/%3E%3C/svg%3E%0A')
+            background: no-repeat center/contain url('data:image/svg+xml,%3Csvg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0.345703 4.49609L4.14258 0.699219V3.8457H14.4434V5.14648H4.14258V8.29297L0.345703 4.49609Z" fill="%231456CB"/%3E%3C/svg%3E%0A')
 
         &.kong-icon-arrowRight
             background: no-repeat center/contain url('data:image/svg+xml,%3Csvg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M14.6543 4.49609L10.8574 0.699219V3.8457H0.556641V5.14648H10.8574V8.29297L14.6543 4.49609Z" fill="%231456CB"/%3E%3C/svg%3E%0A')
