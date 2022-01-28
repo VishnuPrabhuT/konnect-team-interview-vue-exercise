@@ -1,107 +1,92 @@
-/* eslint-disable */
 <template>
   <div class="catalog-container">
-    <section class="search-container">
-      <div>
-        <h2>Services</h2>
-        <KInput type="search" size="small" placeholder="Search" />
-      </div>
-      <div>
-        <KButton appearance="primary" size="small" :isRounded="false"
-          >Add New Service</KButton
+    <template v-if="visibleServices.length > 0">
+      <section class="catalog">
+        <KCard
+          v-for="service in visibleServices"
+          :key="service.id"
+          class="service"
         >
-      </div>
-    </section>
-    <div class="catalog">
-      <KCard v-for="service in services" :key="service.id" class="service">
-        <template slot="title">
-          {{ service.name }}
-        </template>
-        <template slot="body">
-          <div class="service-text">
-            {{
-              service.description.length > 70
-                ? service.description.substring(0, 70) + "..."
-                : service.description
-            }}
-          </div>
-          <div class="versions">
-            <span>{{ service.versions.length }}</span> Versions
-          </div>
-        </template>
-      </KCard>
-    </div>
+          <template slot="title">
+            {{ service.name }}
+          </template>
+          <template slot="body">
+            <div class="service-text">
+              {{
+                service.description.length > 70
+                  ? service.description.substring(0, 70) + "..."
+                  : service.description
+              }}
+            </div>
+            <div class="versions">
+              <span>{{ service.versions.length }}</span> Versions
+            </div>
+          </template>
+        </KCard>
+      </section>
+
+      <Pagination
+        class="pagination"
+        :items="filteredServices"
+        :initialPageSize="12"
+        :totalCount="filteredServices.length"
+        :disablePageJump="true"
+        @pageChanged="
+          ({ page, visibleItems }) => (visibleServices = visibleItems)
+        "
+      >
+      </Pagination>
+    </template>
+    <template v-else>No services to show!</template>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import { mapState, mapActions, mapGetters } from "vuex";
+
 import KCard from "@kongponents/kcard";
-import KInput from "@kongponents/kinput";
-import KButton from "@kongponents/kbutton";
-import axios from "axios";
+
+import Pagination from "./Pagination.vue";
 
 export default Vue.extend({
   name: "Catalog",
+  props: {
+    currentPage: {
+      type: Number,
+      default: 1,
+    },
+  },
   components: {
     KCard,
-    KInput,
-    KButton,
+    Pagination,
   },
   data() {
-    return {
-      services: [],
-      filteredServices: [],
-      searchTerm: "",
-    };
+    return {};
   },
-  watch: {
-    searchTerm(val) {
-      console.log(val);
-    },
+  computed: {
+    ...mapState(["services", "filteredServices", "visibleServices"]),
   },
-  mounted() {
-    this.fetchServices();
-  },
-  methods: {
-    fetchServices() {
-      axios.get("/api/service_packages").then((res) => {
-        this.services = res.data;
-        this.filteredServices = res.data;
-        console.log(res.data);
-      });
-    },
+  created() {
+    console.log(this.services);
   },
 });
 </script>
 
 <style lang="sass">
+@import "../assets/sass/_colors.sass"
+
 .catalog-container
-  margin: 5vh 0
+  margin: 4vh 0
 
-.search-container
-  position: relative
-  display: flex
-  justify-content: space-between
-  padding: 1rem 0
-  text-align: left
-
-  & div > h2
-    margin-bottom: 1vh
-
-  & .k-input
-    border: 1px solid rgba(0, 0, 0, 0.1)!important
-    padding-top: 5px!important
-    padding-bottom: 5px!important
-    padding-left: 35px!important
-
-  & .k-button
-    font-family: Avenir, Helvetica, Arial, sans-serif!important
+  & .page-size-select
+    display: none
 
 .catalog
   width: 100%
   display: grid
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
+  place-items: center
   gap: 1% 0.5%
 
 .service
@@ -136,7 +121,7 @@ export default Vue.extend({
     justify-content: space-between
     height: 100%
     text-align: left
-    color: rgba(0, 0, 0, 0.45)
+    color: $c_grey
 
     & .service-text
       width: 100%
@@ -155,8 +140,8 @@ export default Vue.extend({
         padding: 1px 12px
         font-weight: 500
         border-radius: 40px
-        border: 1px solid #D9E7FF
-        color: #1456CB
+        border: 1px solid $c_blue1
+        color: $c_blue2
 
 @media screen and (max-width: 900px)
   main

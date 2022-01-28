@@ -1,5 +1,5 @@
 {
-  "name": "KONNECT",
+  "name": "konnect",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,7 +13,10 @@
   "dependencies": {
     "@kongponents/kbutton": "^6.7.11",
     "@kongponents/kcard": "^1.0.0",
+    "@kongponents/kicon": "^6.7.11",
     "@kongponents/kinput": "^6.7.11",
+    "@kongponents/kpagination": "^6.7.11",
+    "@kongponents/kselect": "^6.7.11",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
